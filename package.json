@@ -12,7 +12,7 @@
     "build:storybook": "build-storybook -s public",
     "build:watch": "rm -rf ./dist && NODE_ENV=production babel src/components --watch --out-dir ./dist --source-maps",
     "eject": "react-scripts eject",
-    "prepublishOnly": "rm -rf ./dist && NODE_ENV=production babel src/components --out-dir ./dist --source-maps",
+    "prepublishOnly": "npm run build:lib",
     "start": "react-scripts start",
     "storybook": "start-storybook -p 6006",
     "test": "react-scripts test"
