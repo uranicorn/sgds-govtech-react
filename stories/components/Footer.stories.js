@@ -2,12 +2,21 @@ import React from "react";
 import { formatCode } from "../lib/utils";
 import SyntaxHighlighter from "../lib/SyntaxHighlighter";
 import { Footer } from "../../src/components";
+import {
+  Footer as FooterComposable,
+  FooterTop,
+  FooterBottom,
+} from "../../src/components/standard";
+import { default as SgdsContainer } from "../../src/components/Container";
+import Row from "../../src/components/Row";
+import Col from "../../src/components/Col";
 import { Page, Title, Divider } from "../shared-styles";
+
 const links = {
   privacy: " ",
   termsOfUse: " ",
   contact: " ",
-  feedback: " "
+  feedback: " ",
 };
 const code1 = `
 import { Footer } from 'sgds-govtech-react' 
@@ -45,7 +54,12 @@ const links = {
 </div>
 </Footer>
 `;
-const FooterStories = props => {
+
+const MyCustomLink = (props) => {
+  return <a href={props.href || props.to || ""}>{props.children}</a>;
+};
+
+const FooterStories = (props) => {
   return (
     <Page>
       <Title>
@@ -110,6 +124,66 @@ const FooterStories = props => {
           </div>
         </Footer>
         <SyntaxHighlighter>{formatCode(code3)}</SyntaxHighlighter>
+
+        <FooterComposable>
+          <FooterTop
+            title="Design System"
+            builtInLinks={[
+              <MyCustomLink to="/contact">Contact</MyCustomLink>,
+              <a href="/feedback">Feedback</a>,
+            ]}
+          >
+            <SgdsContainer>
+              <Row>
+                <Col is={3}>
+                  <p>A description of this site</p>
+                </Col>
+                <Col is={3}>
+                  <strong style={{ color: "white" }}>Links</strong>
+                  <p>
+                    <a href="https://www.example.com">An external site</a>
+                  </p>
+                  <p>
+                    <MyCustomLink to="/another-page">Another page</MyCustomLink>
+                  </p>
+                </Col>
+              </Row>
+            </SgdsContainer>
+          </FooterTop>
+          <FooterBottom
+            builtInLinks={[
+              <a href="https://example.com" target="_blank">
+                Report vulnerability
+              </a>,
+              <MyCustomLink to="/terms">Terms of Use</MyCustomLink>,
+            ]}
+          >
+            <SgdsContainer>
+              <Row>
+                <Col>
+                  <div>
+                    <span className="sgds-icon sgds-icon-facebook"></span>
+                    <span className="sgds-icon sgds-icon-instagram"></span>
+                    <span className="sgds-icon sgds-icon-linkedin"></span>
+                  </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="has-text-right-desktop has-text-right-tablet has-text-left-mobile">
+                  <p className="is-hidden-touch">
+                    © 2020 Government of Singapore. Last Updated 23 Sep 2020
+                  </p>
+                  <p className="is-hidden-desktop">
+                    © 2020 Government of Singapore
+                  </p>
+                  <p className="is-hidden-desktop last-updated">
+                    Last Updated 23 Sep 2020
+                  </p>
+                </Col>
+              </Row>
+            </SgdsContainer>
+          </FooterBottom>
+        </FooterComposable>
       </section>
     </Page>
   );

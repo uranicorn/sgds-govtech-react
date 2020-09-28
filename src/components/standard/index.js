@@ -8,3 +8,4 @@ export {
   MainNavMenuStart,
   MainNavMenuEnd,
 } from "./MainNav";
+export { Footer, FooterTop, FooterBottom } from "./Footer";
