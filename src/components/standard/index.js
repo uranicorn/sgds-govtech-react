@@ -1,3 +1,4 @@
+export { Masthead } from "./Masthead";
 export {
   MainNav,
   MainNavBrand,

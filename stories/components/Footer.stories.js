@@ -25,6 +25,12 @@ import { Footer } from 'sgds-govtech-react'
 
 `;
 const code2 = `
+import { Footer } from 'sgds-govtech-react' 
+
+<Footer title="Singapore Design Systems" date="15 Aug 2019" isFluid/>
+
+`;
+const code3 = `
 const links = {
   privacy: " ",
   termsOfUse: " ",
@@ -34,7 +40,7 @@ const links = {
 
 <Footer title="Singapore Design Systems" date="15 Aug 2019" links={links}/>
 `;
-const code3 = `
+const code4 = `
 const links = {
   privacy: " ",
   termsOfUse: " ",
@@ -83,6 +89,16 @@ const FooterStories = (props) => {
 
         <Divider />
 
+        <h4>Fluid Footer</h4>
+        <Footer
+          title="Singapore Design Systems"
+          date="15 Aug 2019"
+          isFluid
+        ></Footer>
+        <SyntaxHighlighter>{formatCode(code2)}</SyntaxHighlighter>
+
+        <Divider />
+
         <h4>Footer with necessary links</h4>
 
         <Footer
@@ -90,7 +106,7 @@ const FooterStories = (props) => {
           date="15 Aug 2019"
           links={links}
         ></Footer>
-        <SyntaxHighlighter>{formatCode(code2)}</SyntaxHighlighter>
+        <SyntaxHighlighter>{formatCode(code3)}</SyntaxHighlighter>
 
         <Divider />
 
@@ -123,8 +139,12 @@ const FooterStories = (props) => {
             </p>
           </div>
         </Footer>
-        <SyntaxHighlighter>{formatCode(code3)}</SyntaxHighlighter>
+        <SyntaxHighlighter>{formatCode(code4)}</SyntaxHighlighter>
 
+        <Divider />
+
+        <h4>Composable Footer</h4>
+        
         <FooterComposable>
           <FooterTop
             title="Design System"
